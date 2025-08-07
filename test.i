@@ -1,6 +1,6 @@
 [Settings]
   additional_libraries = 'build/libmylib.so'
-  # on mac this is probebly 'build/libmylib.dylib'
+  # on mac this is probably 'build/libmylib.dylib'
 []
 
 [Models]
