@@ -28,11 +28,9 @@ jobs:
           torch-version: 2.5.1
       - name: Install NEML2
         run: |
-          ls
-          ls neml2-src
           cmake --preset runner -GNinja -S neml2-src -B neml2-build
-          cmake --build --preset runner
-          cmake --install neml2-build/runner --prefix neml2-install
+          cmake --build neml2-build
+          cmake --install neml2-build --prefix neml2-install
       - name: Build custom library
         run: |
           cmake -Dneml2_ROOT=neml2-install -B build

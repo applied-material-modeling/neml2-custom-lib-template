@@ -28,9 +28,9 @@ To make things easier, you can just follow these steps (assuming the development
 ```
 git clone git@github.com:applied-material-modeling/neml2.git
 cd neml2
-cmake --preset runner
-cmake --build --preset runner
-cmake --install build/runner --prefix /path/to/install/neml2
+cmake --preset runner -B build
+cmake --build build
+cmake --install build --prefix /path/to/install/neml2
 ```
 
 Note `/path/to/install/neml2` is the path where you want NEML2 to be installed.
