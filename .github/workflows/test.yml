@@ -13,22 +13,23 @@ concurrency:
 
 jobs:
   test:
-    needs: clang-format
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
       - name: Set up NEML2 environment
         uses: applied-material-modeling/neml2-ci@main
         with:
+          path: neml2-src
           python-version: 3.9
           cmake-version: 3.26
           torch-version: 2.5.1
-          path: neml2-src
       - name: Install NEML2
         run: |
+          ls
+          ls neml2-src
           cmake --preset runner -GNinja -S neml2-src -B neml2-build
           cmake --build --preset runner
           cmake --install neml2-build/runner --prefix neml2-install
