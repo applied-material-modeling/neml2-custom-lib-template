@@ -57,7 +57,7 @@ Our custom library contains a custom model named "MyModel". It can be used toget
 ```python
 [Settings]
   additional_libraries = 'build/libmylib.so'
-  # on mac this is probebly 'build/libmylib.dylib'
+  # on mac this is probably 'build/libmylib.dylib'
 []
 
 [Models]
