@@ -36,4 +36,4 @@ jobs:
           cmake -Dneml2_ROOT=neml2-install -B build
           cmake --build build
       - name: Run tests
-        run: neml2-install/bin/runner inspect test.i model
+        run: neml2-install/bin/neml2-inspect test.i model
