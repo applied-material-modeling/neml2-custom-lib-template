@@ -6,22 +6,22 @@
 [Models]
   [a_model_from_neml2]
     type = ScalarLinearCombination
-    from_var = 'state/A state/B'
-    coefficients = '-1.1 2.3'
-    to_var = 'state/C'
+    from = 'A B'
+    weights = '-1.1 2.3'
+    to = 'C'
   []
   [another_model_from_neml2]
     type = ScalarLinearCombination
-    from_var = 'state/B state/C'
-    coefficients = '0.3 -1'
-    to_var = 'state/D'
+    from = 'B C'
+    weights = '0.3 -1'
+    to = 'D'
   []
   ######################################### our custom model
   [my_custom_model]
     type = MyModel
-    y = 'state/E'
-    x1 = 'state/C'
-    x2 = 'state/D'
+    y = 'E'
+    x1 = 'C'
+    x2 = 'D'
   []
   #########################################
   [model]

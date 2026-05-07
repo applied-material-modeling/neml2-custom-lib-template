@@ -1,5 +1,5 @@
 #include "MyModel.h"
-#include <neml2/base/Registry.h>
+#include "neml2/tensors/functions/imap.h"
 
 namespace neml2
 {
@@ -9,9 +9,9 @@ OptionSet
 MyModel::expected_options()
 {
   OptionSet options = Model::expected_options();
-  options.set_output("y");
-  options.set_input("x1");
-  options.set_input("x2");
+  options.add_output("y", "The output variable");
+  options.add_input("x1", "The first input variable");
+  options.add_input("x2", "The second input variable");
   return options;
 }
 
@@ -31,8 +31,8 @@ MyModel::set_value(bool out, bool dout, bool /*d2out*/)
 
   if (dout)
   {
-    _y.d(_x1) = Scalar::identity_map(_x1.options());
-    _y.d(_x2) = Scalar::identity_map(_x2.options());
+    _y.d(_x1) = imap_v<Scalar>(_x1.options());
+    _y.d(_x2) = imap_v<Scalar>(_x2.options());
   }
 }
 } // namespace neml2

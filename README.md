@@ -63,22 +63,22 @@ Our custom library contains a custom model named "MyModel". It can be used toget
 [Models]
   [a_model_from_neml2]
     type = ScalarLinearCombination
-    from_var = 'state/A state/B'
-    coefficients = '-1.1 2.3'
-    to_var = 'state/C'
+    from = 'A B'
+    weights = '-1.1 2.3'
+    to = 'C'
   []
   [another_model_from_neml2]
     type = ScalarLinearCombination
-    from_var = 'state/B state/C'
-    coefficients = '0.3 -1'
-    to_var = 'state/D'
+    from = 'B C'
+    weights = '0.3 -1'
+    to = 'D'
   []
   ######################################### our custom model
   [my_custom_model]
     type = MyModel
-    y = 'state/E'
-    x1 = 'state/C'
-    x2 = 'state/D'
+    y = 'E'
+    x1 = 'C'
+    x2 = 'D'
   []
   #########################################
   [model]
@@ -92,18 +92,18 @@ Note how `Settings/additional_libraries` tells NEML2 to load our custom library.
 
 To test it, try
 ```
-/path/to/install/neml2/bin/runner inspect test.i model
+/path/to/install/neml2/bin/neml2-inspect test.i model
 ```
 which prints the summary of the composed model:
 ```
 Name:       model
-Input:      state/A [Scalar]
-            state/B [Scalar]
-Output:     state/E [Scalar]
-Buffers:    a_model_from_neml2_c_0 [Scalar][Double][cpu]
-            a_model_from_neml2_c_1 [Scalar][Double][cpu]
-            another_model_from_neml2_c_0 [Scalar][Double][cpu]
-            another_model_from_neml2_c_1 [Scalar][Double][cpu]
+Input:      A [Scalar]
+            B [Scalar]
+Output:     E [Scalar]
+Buffers:    a_model_from_neml2_w_0 [Scalar][Double][cpu]
+            a_model_from_neml2_w_1 [Scalar][Double][cpu]
+            another_model_from_neml2_w_0 [Scalar][Double][cpu]
+            another_model_from_neml2_w_1 [Scalar][Double][cpu]
 ```
 
 ## Have fun developing!
